@@ -9,9 +9,9 @@
     "lint:fix": "eslint apps/**/*.ts --fix",
     "format": "prettier --write apps/**/*.ts",
     "format:check": "prettier --check apps/**/*.ts",
-    "start": "concurrently -c blue,yellow -n api,web \"start:api\" \"start:web\"",
+    "start": "concurrently -c blue,yellow -n api,web \"yarn start:api\" \"yarn start:web\"",
     "start:api": "yarn workspace api start",
-    "start:web": "yarn workspace web start"
+    "start:web": "yarn workspace web dev"
   },
   "workspaces": [
     "apps/*"
