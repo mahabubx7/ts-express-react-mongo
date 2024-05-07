@@ -2,7 +2,19 @@ import Env from '@mx7/tenv'
 import path from 'path'
 import { config } from 'dotenv'
 
-config({ path: path.resolve(__dirname, '../../../.env') })
+let envPath: string
+
+if (process.env.NODE_ENV === 'test') {
+  envPath = path.resolve(__dirname, '../../../.env.test')
+} else {
+  envPath = path.resolve(__dirname, '../../../.env')
+}
+
+if (['prod', 'production'].includes(process.env.NODE_ENV as string)) {
+  config()
+} else {
+  config({ path: envPath })
+}
 
 const envParser = new Env(process.env as Record<string, string>)
 
