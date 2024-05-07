@@ -23,6 +23,9 @@ export const env = {
   host: envParser.key('API_HOST', '0.0.0.0').get(),
   nodeEnv: envParser.key('NODE_ENV', 'dev').get(),
   mongoUri: envParser
-    .key('MONGODB_URI', 'mongodb://localhost:27017/ermovied')
+    .key(
+      'MONGODB_URI',
+      'mongodb+srv://mahabubx7:u4agBPoe09tUa3Gl@mahabub007.psj3dxq.mongodb.net/ermovied?retryWrites=true&w=majority&appName=mahabub007',
+    )
     .get(),
 } as const
