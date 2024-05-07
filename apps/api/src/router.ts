@@ -11,4 +11,6 @@ router.delete('/topics/:id', topicController.delete)
 router.put('/topics/:id/up', topicController.voteUp)
 router.put('/topics/:id/down', topicController.voteDown)
 
+// :: END REGISTER routes here :: //
+
 export { router }

@@ -7,6 +7,7 @@
     "start": "nodemon",
     "dev": "node -r dotenv/config -r ts-node/register ./src/main.ts",
     "build": "tsc",
+    "prebuild": "rimraf dist",
     "start:prod": "node dist/main.js"
   },
   "devDependencies": {
@@ -15,6 +16,7 @@
     "@types/node": "^20.12.10",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
+    "rimraf": "^5.0.5",
     "typescript": "^5.4.5"
   },
   "dependencies": {

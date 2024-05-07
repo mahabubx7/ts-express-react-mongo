@@ -11,7 +11,11 @@
     "format:check": "prettier --check apps/**/*.ts",
     "start": "concurrently -c blue,yellow -n api,web \"yarn start:api\" \"yarn start:web\"",
     "start:api": "yarn workspace api start",
-    "start:web": "yarn workspace web dev"
+    "start:web": "yarn workspace web dev",
+    "build:web": "yarn workspace web build",
+    "build:api": "yarn workspace api build",
+    "build": "NODE_ENV=production yarn build:api && yarn build:web",
+    "prod": "NODE_ENV=production yarn workspace api start:prod"
   },
   "workspaces": [
     "apps/*"
