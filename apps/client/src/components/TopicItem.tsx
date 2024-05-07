@@ -14,6 +14,50 @@ const TopicItem = ({
   downVote,
   deleteTopic,
 }: ITopicItemProps) => {
+  function parseDatePrefix(day: string) {
+    const prefix: Record<string, string> = {
+      1: 'st',
+      2: 'nd',
+      3: 'rd',
+      4: 'th',
+      5: 'th',
+      6: 'th',
+      7: 'th',
+      8: 'th',
+      9: 'th',
+      0: 'th',
+    }
+
+    return prefix[day]
+  }
+
+  function parseMonth(month: string) {
+    const months: Record<string, string> = {
+      0: 'Jan',
+      1: 'Feb',
+      2: 'Mar',
+      3: 'Apr',
+      4: 'May',
+      5: 'Jun',
+      6: 'Jul',
+      7: 'Aug',
+      8: 'Sep',
+      9: 'Oct',
+      10: 'Nov',
+      11: 'Dec',
+    }
+
+    return months[month]
+  }
+
+  function parseDateString(date: Date) {
+    const d = new Date(date)
+    const day = d.getDate().toString()
+    const dayDigit = day[day.length - 1]
+    const month = parseMonth(d.getMonth().toString())
+    return `${day}${parseDatePrefix(dayDigit)} ${month}`
+  }
+
   return (
     <div className="topic_card bg-white p-6 rounded-md flex justify-between">
       <div className="flex flex-col flex-start">
@@ -44,7 +88,7 @@ const TopicItem = ({
           <span className="uppercase font-semibold text-gray-500">
             created at
           </span>
-          : {new Date(topic.published_at).toLocaleDateString()}
+          : {parseDateString(topic.published_at)}
         </p>
       </div>
 
